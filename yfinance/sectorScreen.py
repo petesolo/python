@@ -7,6 +7,23 @@ primeList = pd.DataFrame(columns=['Stock','Current Price','YTD High','YTD Low','
 
 print('Retrieving SPX Index data...')
 spxIndex = yf.Ticker('^GSPC')
+spxIndexData = spxIndex.history(start='1900-01-01', interval='1d')
+spxPriceLast = spxIndexData['Close'][-1]
+spxPrice26wk = spxIndexData['Close'][-130]
+spxPrice52wk = spxIndexData['Close'][-260]
+spxStr26wk = (spxPriceLast - spxPrice26wk) / spxPrice26wk
+spxStr52wk = (spxPriceLast - spxPrice52wk) / spxPrice52wk
+print()
+
+print('Retrieving Energy sector data...')
+energySector = yf.Ticker('^GSPE')
+energySectorData = energySector.history(start='1900-01-01', interval='1d')
+energyPriceLast = energySectorData['Close'][-1]
+energyPrice26wk = energySectorData['Close'][-130]
+energyPrice52wk = energySectorData['Close'][-260]
+energyStr26wk = (energyPriceLast - energyPrice26wk) / energyPrice26wk
+energyStr52wk = (energyPriceLast - energyPrice52wk) / energyPrice52wk
+print()
 
 print('Retrieving sector data...')
 energySector = yf.Ticker('^GSPE')
@@ -22,8 +39,4 @@ utilitiesSector = yf.Ticker('^SP500-55')
 realEstateSector = yf.Ticker('^SP500-60')
 print()
 
-for stocks in spxStocks
-
 # check for stocks that have a SMA21 > SMA200
-
-#
